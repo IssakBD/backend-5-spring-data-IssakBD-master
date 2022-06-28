@@ -1,0 +1,38 @@
+package com.bobocode.model;
+
+import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.ValueGenerationType;
+
+import javax.persistence.*;
+
+/**
+ * TODO: you're job is to implement mapping for JPA entity {@link Movie}
+ * - specify id
+ * - configure id as auto-increment column
+ * - explicitly specify each column name ("id", "name", "director", and "duration" accordingly)
+ * - specify not null constraint for fields {@link Movie#name} and {@link Movie#director}
+ */
+@NoArgsConstructor
+@Getter
+@Setter
+@Table(name = "movie")
+@Entity
+public class Movie {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "director", nullable = false)
+    private String director;
+
+    @Column(name = "duration")
+    private Integer durationSeconds;
+}
